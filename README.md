@@ -2,6 +2,21 @@
 
 A Neovim plugin that translates text using the DeepL API and displays the results in a floating window.
 
+![Neovim](https://img.shields.io/badge/Neovim-0.7+-green.svg)
+![Lua](https://img.shields.io/badge/Lua-blue.svg)
+![License](https://img.shields.io/badge/License-MIT-green.svg)
+
+<table>
+  <tr>
+    <th>DeepL Translation</th>
+  </tr>
+  <tr>
+    <td>
+      <img src="https://github.com/user-attachments/assets/8bcbc8cc-d022-48e8-8034-e053a026677e" />
+    </td>
+  </tr>
+</table>
+
 ## ✨ Features
 
 - Translate text selected in visual mode using the DeepL API
