@@ -2,8 +2,18 @@ local M = {}
 
 local utils = require("deepl.utils")
 
---- DeepL API base URL
-M.API_BASE_URL = "https://api-free.deepl.com/v2/translate"
+--- Determine API base URL based on API key format
+--- Free API keys end with ":fx", Pro API keys don't have this suffix
+--- See: https://developers.deepl.com/docs/getting-started/auth
+---@param api_key string DeepL API key
+---@return string API base URL
+local function get_api_base_url(api_key)
+  if api_key:match(":fx$") then
+    return "https://api-free.deepl.com/v2/translate"
+  else
+    return "https://api.deepl.com/v2/translate"
+  end
+end
 
 --- Translate text using DeepL API
 ---@param text string Text to translate
@@ -16,6 +26,7 @@ function M.translate(text, target_lang, callback)
     callback(nil, "DEEPL_API_KEY environment variable is not set")
     return
   end
+  ---@cast api_key string
 
   if utils.is_empty(text) then
     callback(nil, "Text to translate is empty")
@@ -27,6 +38,9 @@ function M.translate(text, target_lang, callback)
     return
   end
 
+  -- Determine API base URL based on API key format
+  local api_base_url = get_api_base_url(api_key)
+
   -- Escape text
   local escaped_text = text:gsub('"', '\\"'):gsub("\n", "\\n")
 
@@ -36,7 +50,7 @@ function M.translate(text, target_lang, callback)
       -H 'Authorization: DeepL-Auth-Key %s' \
       -H 'Content-Type: application/json' \
       -d '{"text":["%s"],"target_lang":"%s"}']],
-    M.API_BASE_URL,
+    api_base_url,
     api_key,
     escaped_text,
     target_lang:upper()
