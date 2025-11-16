@@ -65,6 +65,7 @@ function M.show_translation(text, original_text)
   local content_height = display_lines
 
   -- Use max_height for long content, min_height for short content
+  local win_height
   if content_height > max_height then
     win_height = max_height
   else
