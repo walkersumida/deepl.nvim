@@ -1,21 +1,21 @@
-# deepl.nvim
+# 🌐 deepl.nvim
 
 A Neovim plugin that translates text using the DeepL API and displays the results in a floating window.
 
-## Features
+## ✨ Features
 
 - Translate text selected in visual mode using the DeepL API
 - Display translation results in a floating window
 - User-specified target language
 - Simple and lightweight implementation
 
-## Requirements
+## 📋 Requirements
 
 - Neovim 0.7.0 or higher
 - DeepL API key (free or paid plan)
 - `curl` command
 
-## Installation
+## 📦 Installation
 
 ### lazy.nvim
 
@@ -44,7 +44,7 @@ use {
 Plug "walkersumida/deepl.nvim"
 ```
 
-## Configuration
+## ⚙️ Configuration
 
 ### DeepL API Key
 
@@ -66,7 +66,7 @@ require('deepl').setup()
 
 Currently, there are no configuration options, but they may be added in the future.
 
-## Usage
+## 🚀 Usage
 
 1. Select text in visual mode
 2. Run the `:DeepL <language_code>` command
@@ -103,7 +103,7 @@ Examples of language codes:
 
 For a complete list of supported languages, see the [DeepL API documentation](https://developers.deepl.com/docs/getting-started/supported-languages).
 
-## Keybinding Examples
+## ⌨️ Keybinding Examples
 
 Example keybindings for convenience:
 
@@ -115,13 +115,13 @@ vim.keymap.set('v', '<leader>te', ':DeepL EN<CR>', { desc = 'Translate to Englis
 vim.keymap.set('v', '<leader>tj', ':DeepL JA<CR>', { desc = 'Translate to Japanese' })
 ```
 
-## Floating Window Controls
+## 🎮 Floating Window Controls
 
 When the translation result floating window is displayed:
 
 - Press `q` or `ESC` to close
 
-## Troubleshooting
+## 🔧 Troubleshooting
 
 ### API Key Error
 
@@ -143,7 +143,7 @@ curl error: ...
 
 The DeepL API response may be incorrect. Check that your API key is valid.
 
-## References
+## 📚 References
 
 - [DeepL API Documentation](https://www.deepl.com/docs-api)
 
