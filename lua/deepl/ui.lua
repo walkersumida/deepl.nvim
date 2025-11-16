@@ -19,22 +19,12 @@ end
 
 --- Create a floating window and display translation result
 ---@param text string Text to display
----@param original_text string|nil Original text (optional)
-function M.show_translation(text, original_text)
+function M.show_translation(text)
   -- Create buffer
   local buf = vim.api.nvim_create_buf(false, true)
 
   -- Prepare content to display
   local lines = {}
-
-  if original_text then
-    table.insert(lines, "【Original Text】")
-    for line in original_text:gmatch("[^\n]+") do
-      table.insert(lines, line)
-    end
-    table.insert(lines, "")
-    table.insert(lines, "【Translation】")
-  end
 
   for line in text:gmatch("[^\n]+") do
     table.insert(lines, line)
