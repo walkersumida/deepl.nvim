@@ -12,7 +12,7 @@ A Neovim plugin that translates text using the DeepL API and displays the result
   </tr>
   <tr>
     <td>
-      <img src="https://github.com/user-attachments/assets/8bcbc8cc-d022-48e8-8034-e053a026677e" />
+      <img src="https://github.com/user-attachments/assets/d9ac9c90-2533-4fda-836a-bba4d05cfb64" />
     </td>
   </tr>
 </table>
