@@ -42,7 +42,7 @@ function M.translate(text, target_lang, callback)
   local api_base_url = get_api_base_url(api_key)
 
   -- Escape text
-  local escaped_text = text:gsub('"', '\\"'):gsub("\n", "\\n")
+  local escaped_text = text:gsub('"', '\\"'):gsub("\n", "\\n"):gsub("'", "'\\''")
 
   -- Build curl command
   local curl_cmd = string.format(
