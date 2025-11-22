@@ -1,7 +1,7 @@
 local M = {}
 
 --- Get text selected in visual mode
----@return string|nil Selected text, or nil if no selection
+---@return table|nil Selection info {text, start_line, start_col, end_line, end_col, buf_id}, or nil if no selection
 function M.get_visual_selection()
   -- Get start and end positions of visual selection marks
   local start_pos = vim.fn.getpos("'<")
@@ -16,6 +16,9 @@ function M.get_visual_selection()
   if start_line == 0 or end_line == 0 then
     return nil
   end
+
+  -- Get current buffer ID
+  local buf_id = vim.api.nvim_get_current_buf()
 
   -- Get selected text
   local lines = vim.fn.getline(start_line, end_line)
@@ -36,7 +39,20 @@ function M.get_visual_selection()
     lines[#lines] = string.sub(lines[#lines], 1, end_col)
   end
 
-  return table.concat(lines, "\n")
+  return {
+    text = table.concat(lines, "\n"),
+    start_line = start_line,
+    start_col = start_col,
+    end_line = end_line,
+    end_col = end_col,
+    buf_id = buf_id,
+  }
+end
+
+--- Clear visual selection marks
+function M.clear_visual_marks()
+  vim.fn.setpos("'<", { 0, 0, 0, 0 })
+  vim.fn.setpos("'>", { 0, 0, 0, 0 })
 end
 
 --- Check if a string is empty
